@@ -1,22 +1,34 @@
-@R0
+@0
 D=M
-@R1
-M=!M
-@R2
-D=D&M
+D=!D
+@3
 M=D
 
-@R0
+// Step 2: Compute NOT R1 and store in R4
+@1
 D=M
-@R1
-M=!M
-D=D&M
-@R3
+D=!D
+@4
 M=D
 
-@R2
+// Step 3: Compute (R0 AND NOT R1) and store in R5
+@4
 D=M
-@R3
+@0
+D=D&M
+@5
+M=D
+
+// Step 4: Compute (NOT R0 AND R1)
+@3
+D=M
+@1
+D=D&M
+
+// Step 5: Compute final XOR using OR operation
+@5
 D=D|M
-@R2
+
+// Store result in R2
+@2
 M=D
